@@ -1,0 +1,116 @@
+:root { /*define as variaveis*/
+    --text-color: #DBE4EF;
+    --card-front-color: rgb(109, 47, 223);
+    --card-back-color: #000000;
+}
+
+body { /*codiguraçoes aplicadas ao documento todo*/
+    background: url('img/galaxia.png'); /*define a imagem do fundo*/
+    font-family: Bai Jamjuree; /*define a fonte dos textos*/
+}
+
+#container { /*configurações do container*/
+    display: flex;  /*coloca os cartões em linha*/
+    flex-wrap: wrap; /*quebra a linha*/
+    justify-content: space-between; /*faz com que todos os caroes tenham o mesmoo tamnanho*/
+    padding: 4rem; /*espaçamento interno*/
+    gap: 3rem; /*cria um espaço entre os cartões*/
+}
+
+.cartao {
+    margin: 1rem 1rem; /*tamabnho das margens*/
+    height: 20rem; /*altura */
+    flex-grow: 1; /*faz com que o espaçamento dos cartões seja o mesmo*/
+    flex-basis: calc(33% - 6rem); /* faz o calculo da proporção dos cartões menos o espaço de separação*/
+}
+
+.cartao__conteudo {
+    background-color: var(--card-front-color); /*define a cor do fundo dos cartões*/
+    text-align: center; /*alinha os textos dentro dos cartões*/
+    /* background-color: aquamarine; */
+    height: 100%; /*define o tamanho proporcional dos cartões*/
+    transform-style: preserve-3d; /*preserva o conteudo e o giro do cartao*/
+    transition: transform 300ms ease-in-out; /*faz com que o giro do cartão fique mais facil de ver - fazendo com que ele gire mais devagar e fique facil de ser visualizado*/
+}
+
+.cartao__conteudo h3 { /**/
+    color: var(--text-color); /*define a cor do texto*/
+    border: 1px solid var(--text-color); /*cria uma borda de um pixel sollida (ontinua) em volta do titulo 3"*/
+    text-align: left; /*alinha o texto a esquerda*/
+    padding: 0.5rem; /*espaçamento interno*/
+    position: absolute; /*so usa o espaço necessario*/
+    margin: 0.6rem; /* cria uma margem envolta do iten*/
+    border-radius: 0.6rem; /* arredonda as bordas*/
+    font-size: 1vw; /* altera o tamanho da fonte para 1% do tamanho da tela*/
+    backface-visibility: hidden; /*fique com as "costas" do cartão fiquem invisiveis*/
+}
+
+.cartao__conteudo p {
+    margin-top: 1rem; /*define a margem superior*/
+    padding: 2rem; /*define o espaçamneto interno*/
+    margin-top: 4rem; /*define a margem superior*/
+    font-size: 1.4vw; /* altera o tamanho da fonte para 1,4% do tamanho da tela*/ 
+}
+
+.cartao__conteudo__pergunta p { /*estilos das perguntas*/
+    color: var(--text-color); /*cor do texto*/
+    font-weight: 500; /*peso da fonte*/
+}
+
+.cartao__conteudo__resposta p { /*estilos das respostasd*/
+    color: var(--card-back-color); /*cor do texto*/
+    font-weight: 700; /*peso do fonte*/
+}
+
+.cartao.active .cartao__conteudo { /*estilos quando o catão for clicado*/
+    transform: rotateY(180deg); /*faz o cartão ser rotacionado */
+}
+
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden; /*esconde as "cosatas" tanto das perguntas quanto das respostas*/
+    position: absolute; /*so usa o espaço necessario*/
+    height: 100%; /*utiliza 100% da altura disponivel*/
+    width: 100%; /*utiliza 100% da largura disponivel*/
+    box-sizing: border-box; /*adiciona o valor das bordas e margens ao elemento*/
+}
+
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);/*faz o cartão ser rotacionado */
+    background-color: rgba(6, 3, 180, 0.979); /*altera a cor do fundo*/
+    border: 4px solid var(--card-back-color);/**/
+}
+
+footer { /*estilos para o rodape*/
+    background-color: black;
+    color: white; /*cor do texto*/
+    position: fixed; /**/
+    bottom: 0; /**/
+    width: 100%; /*utiliza 100% da largura disponivel*/
+    height: 2rem; /*define a altura*/
+}
+
+footer p { /*estilos dos paragrafos no rodape*/
+    text-align: center; /*alinha o texto*/
+    font-size: 0.6rem; /*tamanho da fonte*/
+    margin-top: 0.5rem; /*margem superior*/
+}
+
+@media (max-width: 560px) { /*reconfigura a tela para mobile*/
+    
+    body {
+        background: url('img/galaxia1.png'), no-repeat cover; /*altera imagem do fundo*/
+    }
+
+    .cartao {
+        flex: 1 0 calc(100% - 1rem) /*redefine os cartoes para aparecer apenas 1 por ves*/
+    }
+
+    .cartao__conteudo h3 { 
+        font-size: 3vw; /*tamaho da fonte no titulo dos cartoes*/
+    }
+
+    .cartao__conteudo p {
+        font-size: 3.8vw; /*tamanho da fonte nos textos dos cartoes*/
+    }
+}
